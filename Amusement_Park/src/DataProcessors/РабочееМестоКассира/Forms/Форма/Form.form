@@ -650,13 +650,25 @@
         <items xsi:type="form:FormField">
           <name>СписокНоменклатурыНоменклатура</name>
           <id>79</id>
+          <title>
+            <key>ru</key>
+            <value>Номенклатура</value>
+          </title>
           <visible>true</visible>
           <enabled>true</enabled>
           <userVisible>
-            <common>true</common>
+            <for>
+              <role>Role.Кассир</role>
+            </for>
+            <for>
+              <role>Role.ОператорАттракциона</role>
+            </for>
+            <for>
+              <role>Role.ПолныеПрава</role>
+            </for>
           </userVisible>
           <dataPath xsi:type="form:DataPath">
-            <segments>СписокНоменклатуры.Номенклатура</segments>
+            <segments>СписокНоменклатуры.Ссылка</segments>
           </dataPath>
           <extendedTooltip>
             <name>СписокНоменклатурыНоменклатураРасширеннаяПодсказка</name>
@@ -1178,10 +1190,6 @@
       <dataPath xsi:type="form:DataPath">
         <segments>СуммаИтого</segments>
       </dataPath>
-      <handlers>
-        <event>OnChange</event>
-        <name>СуммаИтогоПриИзменении</name>
-      </handlers>
       <extendedTooltip>
         <name>СуммаИтогоРасширеннаяПодсказка</name>
         <id>31</id>
@@ -1504,9 +1512,12 @@
     <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
       <segments>СписокНоменклатуры.ЭтоГруппа</segments>
     </notDefaultUseAlwaysAttributes>
+    <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
+      <segments>СписокНоменклатуры.Ссылка</segments>
+    </notDefaultUseAlwaysAttributes>
     <extInfo xsi:type="form:DynamicListExtInfo">
       <queryText>ВЫБРАТЬ
-	СправочникНоменклатуры.Ссылка КАК Номенклатура,
+	СправочникНоменклатуры.Ссылка КАК Ссылка,
 	СправочникНоменклатуры.КоличествоПосещений,
 	ЦеныНоменклатурыСрезПоследних.Цена,
 	СправочникНоменклатуры.ЭтоГруппа
@@ -1566,6 +1577,10 @@
       <fields xsi:type="schema:DataCompositionSchemaDataSetField">
         <dataPath>Родитель</dataPath>
         <field>Родитель</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Ссылка</dataPath>
+        <field>Ссылка</field>
       </fields>
       <parameters>
         <name>Период</name>
